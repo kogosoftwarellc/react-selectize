@@ -1,5 +1,8 @@
 # React Selectize
 
+## 3.0.2 / 5th January 2021
+* merged fix for clicking scrollbar closes dropdown: https://github.com/furqanZafar/react-selectize/pull/194
+
 ## 3.0.1 / 5th January 2021
 * copied over published code to abandon livescript.
 
