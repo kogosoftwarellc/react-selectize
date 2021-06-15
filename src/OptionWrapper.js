@@ -20,6 +20,9 @@
           window.addEventListener('mouseup', listener);
           return cancelEvent(e);
         },
+        'aria-selected': this.props.highlight,
+        id: this.props.id,
+        role: 'option',
         onMouseMove: this.props.onMouseMove,
         onMouseOut: this.props.onMouseOut,
         onMouseOver: this.props.onMouseOver

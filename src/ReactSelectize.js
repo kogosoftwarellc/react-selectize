@@ -11,6 +11,7 @@
   ValueWrapper = createFactory(require('./ValueWrapper'));
   ResetButton = createFactory(require('./ResetButton'));
   ResizableInput = createFactory(require('./ResizableInput'));
+  uuid = require('uuid');
   ref$ = require('./utils'), cancelEvent = ref$.cancelEvent, classNameFromObject = ref$.classNameFromObject;
   module.exports = ReactSelectize = (function(superclass){
     var prototype = extend$((import$(ReactSelectize, superclass).displayName = 'ReactSelectize', ReactSelectize), superclass).prototype, constructor = ReactSelectize;
@@ -126,7 +127,15 @@
         return results$;
       }())), ResizableInput((ref$ = import$({
         disabled: this.props.disabled
-      }, this.props.inputProps), ref$.ref = 'search', ref$.type = 'text', ref$.value = this.props.search, ref$.onChange = function(arg$){
+      }, Object.assign({}, {
+        role: 'combobox', 
+        'aria-expanded': this.props.open, 
+        'aria-autocomplete': 'list', 
+        'aria-haspopup': 'listbox', 
+        'aria-controls': this.listboxId, 
+        'aria-activedescendant':
+            (this.props.highlightedUid && this.props.highlightedUid.uid) ? this.listboxId + '-' + this.props.highlightedUid.uid.value : undefined
+      }, this.props.inputProps)), ref$.ref = 'search', ref$.type = 'text', ref$.value = this.props.search, ref$.onChange = function(arg$){
         var value;
         value = arg$.currentTarget.value;
         return this$.props.onSearchChange(value, function(){
@@ -198,7 +207,7 @@
       }, this.props.renderToggleButton({
         open: this.props.open,
         flipped: flipped
-      }))), DropdownMenu((ref$ = import$({}, this.props), ref$.ref = 'dropdownMenu', ref$.className = classNameFromObject((ref1$ = {
+      }))), DropdownMenu((ref$ = import$({}, Object.assign({id: this.listboxId}, this.props)), ref$.ref = 'dropdownMenu', ref$.className = classNameFromObject((ref1$ = {
         'react-selectize': 1
       }, ref1$[this.props.className + ""] = 1, ref1$)), ref$.theme = this.props.theme, ref$.scrollLock = this.props.scrollLock, ref$.onScrollChange = this.props.onScrollChange, ref$.bottomAnchor = function(){
         return findDOMNode(this$.refs.control);
@@ -486,6 +495,7 @@
     };
     function ReactSelectize(){
       ReactSelectize.superclass.apply(this, arguments);
+      this.listboxId = uuid.v4();
     }
     return ReactSelectize;
   }(React.Component));

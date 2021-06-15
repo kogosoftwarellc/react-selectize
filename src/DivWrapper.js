@@ -11,7 +11,9 @@
     DivWrapper.prototype.render = function(){
       return div({
         className: this.props.className,
-        ref: 'dropdown'
+        id: this.props.id,
+        ref: 'dropdown',
+        role: this.props.role
       }, this.props.children);
     };
     DivWrapper.prototype.componentDidMount = function(){
