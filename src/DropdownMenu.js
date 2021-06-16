@@ -105,6 +105,7 @@
         uid = this$.props.uid(option);
         return OptionWrapper(import$({
           uid: uid,
+          id: option ? this$.props.id + '-' + option.value : undefined,
           ref: function(element){
             this$["option-" + this$.uidToString(uid)] = element;
           },
@@ -170,6 +171,8 @@
           ref: function(element){
             !!element && (this$.dropdownMenu = element);
           },
+          role: 'listbox',
+          id: this.props.id,
           onHeightChange: function(height){
             if (this$.refs.dropdownMenuWrapper) {
               findDOMNode(this$.refs.dropdownMenuWrapper).style.height = height + "px";
