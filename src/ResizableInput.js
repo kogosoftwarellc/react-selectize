@@ -8,7 +8,7 @@
     var prototype = extend$((import$(ResizableInput, superclass).displayName = 'ResizableInput', ResizableInput), superclass).prototype, constructor = ResizableInput;
     ResizableInput.prototype.render = function(){
       var ref$;
-      return input((ref$ = import$({}, this.props), ref$.type = 'input', ref$.className = 'resizable-input', ref$));
+      return input((ref$ = import$({}, this.props), ref$.className = 'resizable-input', ref$));
     };
     ResizableInput.prototype.autosize = function(){
       var x$, inputElement, y$, dummpyInput, ref$;

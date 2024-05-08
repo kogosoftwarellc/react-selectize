@@ -129,13 +129,14 @@
         disabled: this.props.disabled
       }, Object.assign({}, {
         role: 'combobox', 
+        type: 'text',
         'aria-expanded': this.props.open, 
         'aria-autocomplete': 'list', 
         'aria-haspopup': 'listbox', 
         'aria-controls': this.listboxId, 
         'aria-activedescendant':
             (this.props.highlightedUid && this.props.highlightedUid.uid) ? this.listboxId + '-' + this.props.highlightedUid.uid.value : undefined
-      }, this.props.inputProps)), ref$.ref = 'search', ref$.type = 'text', ref$.value = this.props.search, ref$.onChange = function(arg$){
+      }, this.props.inputProps)), ref$.ref = 'search', ref$.value = this.props.search, ref$.onChange = function(arg$){
         var value;
         value = arg$.currentTarget.value;
         return this$.props.onSearchChange(value, function(){
