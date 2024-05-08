@@ -34,6 +34,7 @@ export interface SimpleSelectProps {
   groupsAsColumns?: boolean;
   hideResetButton?: boolean;
   highlightedUid?: any;
+  inputProps?: any;
   name?: string;
   open?: boolean;
   onBlur?(event: SimpleSelectEvent): void;
